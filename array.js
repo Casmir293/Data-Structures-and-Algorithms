@@ -92,3 +92,32 @@ const insertionSort = (arr) => {
   console.log("Insertion Sort ==>", arr);
   return arr;
 };
+
+/**
+ * @QUICK SORT
+ * Recursive function to sort an array.
+ * Choose a pivot, partition the array, and recursively sort the subarrays.
+ */
+const quickSort = (arr) => {
+  if (arr.length <= 1) {
+    return arr;
+  }
+
+  let pivot = arr[arr.length - 1];
+  let left = [];
+  let right = [];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i] < pivot) {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+
+  arr = [...quickSort(left), pivot, ...quickSort(right)];
+  console.log("Quick Sort ==>", arr);
+  return arr;
+};
+
+quickSort(myArray);
